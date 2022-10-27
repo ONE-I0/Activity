@@ -9,34 +9,96 @@
     <title>Static Login</title>
 </head>
 <body>
-    <form action="" method="post">
-    <div class="container bg-white" >
-            <div class="row">
-                <div class="col-lg-6 py-lg-5" style="float:none;margin:auto;margin-top: 10rem;">
-                    <div class="card text-center bg-light t-1 shadow p-3 mb-5 bg-white rounded">
-                        <i class="fa-regular fa-user fa-5x"></i>
-                        <div align="center" style="padding-left: 4px;" class="py-">
-                            <select name="drpCars" id="" style="width: 37.5%;">
-                                <option value="" id="admin">Admin</option>
-                                <option value="" id="content">Content Manager</option>
-                                <option value="" id="system">System User</option>
-                            </select>
-                        </div><br>
-                        <div align="center">
-                            <label for="txtusername"></label>
-                            <input type="text" name="txtusername" id="txtusername" placeholder="User Name">
-                            <br>
-                            <label for="txtpassword"></label>
-                            <input type="password" name="txtpassword" id="txtpassword" placeholder="Password">
-                            <br>
-                            <button type="submit" name="btnProcess">Process</button>
-                        </div>
+
+    <!----------------------------Login in Form design and inputs------------------------------>
+    <div class="container bg-white w-25">
+        <div class="d-flex justify-content-center">
+            <div class="card text-center bg-light shadow mt-5 px-4 py-4">
+                <i class="fa-regular fa-user-circle fa-5x "></i>
+                <br>
+                <form action="" method="post">
+                    <select name="drpPosition" id="" class="form-control">
+                        <option value="Admin" id="admin">Admin</option>
+                        <option value="ContentManager" id="content">Content Manager</option>
+                        <option value="System User" id="system">System User</option>
+                    </select>
+                    <label for="txtusername"></label>
+                    <input type="text" class="form-control " name="txtusername" id="txtusername" placeholder="User Name">
+                    <label for="txtpassword"></label>
+                    <input type="password" name="txtpassword" class="form-control" id="txtpassword" placeholder="Password">
+                    <button type="submit" class="btn btn-primary mt-2 w-100" name="btnSign">Sign In</button>
+                </form>
+                <!---------------------------------Array with static values------------------------------->
+                <?php 
+                    $userPositions = array(
+                        array(
+                            'positions' => 'Admin',
+                            'username' => 'admin',
+                            'password' => 'pass1234',
+                        ),
+                        array(
+                            'positions' => 'Admin',
+                            'username' => 'admin_1',
+                            'password' => 'pass12345',
+                        ),
+                        array(
+                            'positions' => 'ContentManager',
+                            'username' => 'contentmanager',
+                            'password' => 'content123',
+                        ),
+                        array(
+                            'positions' => 'Content Manager',
+                            'username' => 'contentmanager_1',
+                            'password' => 'contentmanager123',
+                        ),
+                        array(
+                            'positions' => 'System User',
+                            'username' => 'systemuser',
+                            'password' => 'user123',
+                        ),
+                    );
+                    //--------------------------------condition for the program----------------------------//
+                    if(isset($_POST['btnSign'])){
+                        $temp = $_POST['drpPosition'];
+                        $user = $_POST['txtusername'];
+                        $pass = $_POST['txtpassword'];
+
+                        if($temp == $userPositions[0]['positions'] && $user == $userPositions[0]['username'] && $pass == $userPositions[0]['password']){
+                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </div>';
+                        }
+                        elseif($temp == $userPositions[1]['positions'] && $user == $userPositions[1]['username'] && $pass == $userPositions[1]['password']){
+                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'</div>';
+                        }
+                        elseif($temp == $userPositions[2]['positions'] && $user == $userPositions[2]['username'] && $pass == $userPositions[2]['password']){
+                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'</div>';
+                        }
+                        elseif($temp == $userPositions[3]['positions'] && $user == $userPositions[3]['username'] && $pass == $userPositions[3]['password']){
+                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'</div>';
+                        }
+                        elseif($temp == $userPositions[4]['positions'] && $user == $userPositions[4]['username'] && $pass == $userPositions[4]['password']){
+                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'</div>';
+                        }
+                        else
+                        echo '<div class="alert alert-danger fixed-top container-fluid" style="width:19.5%;" role="alert">Invalid Username / Password</div>'; 
                         
-                    </div>     
-                </div>
-            </div>
-        </div>    
-    </form>
+                }  
+
+
+                    /*--------------------------------------------Prints all username to check---------------------------------
+                    foreach ($userPositions as $keyPositions => $valuePositions) {
+                        foreach ($valuePositions as $key => $value) {
+                          echo $value . '<br>';
+                        }
+                        echo '<br>';
+                      }
+                      */
+                ?>
+            </div>    
+         </div>     
+     </div>
         
 </body>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
