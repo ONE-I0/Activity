@@ -84,7 +84,7 @@
                 $totalNumber = sizeof($soft) * $quantity;
                 echo "<label><b>Total number of item: </label></b>". $totalNumber . "<br>";
 
-                //this will print the grandtotal
+                //this will print the grandtotal, array sum will only sum the selected softdrinks
                 $grandtotal = $quantity*(array_sum($soft)+$add*$quantity);
                 echo "<label><b>Total amount: </label></b>". $grandtotal . "<br>";
             }
