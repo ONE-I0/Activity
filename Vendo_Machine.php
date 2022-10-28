@@ -7,10 +7,13 @@
     <title>Vendo Machine</title>
 </head>
 <body>
+    <!-----------------------------------declare array with value-------------------------------->
     <?php 
         $softdrinks = array('Coke' => 15, 'Sprite' => 20, 'Royal' => 20, 'Pepsi' =>15,'Mountain Dew' => 20);
         $sizes = array('Regular' => 'Regular', 'Up-Size (add ₱5)' =>'Upsized', 'Jumbo (add ₱10)' => 'Jumbo');
     ?>
+
+    <!-----------------------------------Display checkboxes,dropbox and number input(Products,Options)-------------------------------->
     <form action="" method="get">
         <h2><b>Vendo Machine</b></h2>
 
@@ -52,7 +55,8 @@
                 $quantity = $_GET['quantity'];
                 $size = $_GET['drpSizes'];
                 $soft = $_GET['softTemp'];
-
+            
+                //----------------------------declare add ons------------------------//
                 if($size == 'Regular'){
                     $add = 0;
                 }
@@ -63,13 +67,14 @@
                     $add = 10;
                 }
                 echo "<h2>Purchase Summary</h2>";
-                
+                //--------------------------conditions whether plural or singular------------------------//
                 if($quantity==1){
                     $syn = "piece";
                 }
                 else{
                     $syn = "pieces";
                 }
+                
                 foreach($soft as $keysoft => $Valuesoft){
                     echo "<p>" . $quantity . " " . $syn . " of " . $size . " " . $keysoft . " amounting to ₱". $total = intval($Valuesoft) * intval($quantity) + ($add * intval($quantity)). "</p>"; 
                 }
