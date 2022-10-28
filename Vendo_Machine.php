@@ -7,54 +7,84 @@
     <title>Vendo Machine</title>
 </head>
 <body>
-    <form action="" method="post">
+    <?php 
+        $softdrinks = array('Coke' => 15, 'Sprite' => 20, 'Royal' => 20, 'Pepsi' =>15,'Mountain Dew' => 20);
+        $sizes = array('Regular' => 'Regular', 'Up-Size (add ₱5)' =>'Upsized', 'Jumbo (add ₱10)' => 'Jumbo');
+    ?>
+    <form action="" method="get">
         <h2><b>Vendo Machine</b></h2>
 
-        <fieldset>
+        <fieldset style="width: 30%;" >
         <legend>Products:</legend>
-
-            <input type="checkbox" id="coke" name="Vendo[]" value="15">
-            <label for="coke">Coke - ₱ 15</label>
-            <br>
-
-            <input type="checkbox" id="sprite" name="Vendo[]" value="20">
-            <label for="sprite">Sprite - ₱ 20</label>
-            <br>
-
-            <input type="checkbox" id="royal" name="Vendo[]" value="20">
-            <label for="royal">Royal - ₱ 20</label>
-            <br>
-
-            <input type="checkbox" id="pepsi" name="Vendo[]" value="15">
-            <label for="pepsi">Pepsi - ₱ 15</label>
-            <br>
-
-            <input type="checkbox" id="mountaindew" name="Vendo[]" value="20">
-            <label for="mountaindew">Mountain Dew - ₱ 20</label>
-            <br>
+            <?php 
+                if(isset($softdrinks)){
+                    foreach($softdrinks as $keysoftdrinks => $valuesoftdrinks){
+                        echo "<input type='checkbox' name='softTemp[".$keysoftdrinks."]' value='".$valuesoftdrinks."'><label>".$keysoftdrinks." - ₱".$valuesoftdrinks."</label><br>";
+                    }
+                }
+            ?>
         </fieldset>
-        
         <fieldset>
             <legend>Options</legend>
             <label for="drpSizes">Size</label>
             <select name="drpSizes">
-                <option value="Regular">Regular</option>
-                <option value="Upsize">Up-Sized (add ₱ 5)</option>
-                <option value="Jumbo">Jumbo (add ₱ 10)</option>
+                
+                <?php 
+                    if(isset($sizes)){
+                        foreach ($sizes as $keysizes => $valuesizes){
+                            echo "<option value=".$valuesizes.">$keysizes</option>";
+                        }
+                    }
+                //?>
             </select>
 
-            <label for="Quantity">Quantity</label>
-            <input type="number" id="quantity" name="quantity" min="1" max="30">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" min="0" max="50" value="0"> 
 
             <button type="submit" name="btnProcess">Check Out</button>
         </fieldset>
     </form>
     
     <?php 
-        if(isset($_POST['btnProcess']) && isset($_POST['Vendo'])){
-            $arrFood = $_POST['Vendo'];
-            print_r($arrFood);
+
+        if(isset($_GET['btnProcess'])){
+            if(isset($_GET['softTemp']) && isset($_GET['drpSizes'])){
+                $quantity = $_GET['quantity'];
+                $size = $_GET['drpSizes'];
+                $soft = $_GET['softTemp'];
+
+                if($size == 'Regular'){
+                    $add = 0;
+                }
+                elseif($size == 'Upsized'){
+                    $add = 5;
+                }
+                elseif($size == 'Jumbo'){
+                    $add = 10;
+                }
+                echo "<h2>Purchase Summary</h2>";
+                
+                if($quantity==1){
+                    $syn = "piece";
+                }
+                else{
+                    $syn = "pieces";
+                }
+                foreach($soft as $keysoft => $Valuesoft){
+                    echo "<p>" . $quantity . " " . $syn . " of " . $size . " " . $keysoft . " amounting to ₱". $total = intval($Valuesoft) * intval($quantity) + ($add * intval($quantity)). "</p>"; 
+                }
+                
+                $totalNumber = sizeof($soft) * $quantity;
+                echo "<label>Total number of item:</label>". $totalNumber . "<br>";
+
+                $grandtotal = $quantity*(array_sum($soft)+$add*$quantity);
+                echo "<label>Total amount:</label>". $grandtotal . "<br>";
+            }
+            else{
+                echo "No selected product, Try Again";
+            }
         }
+    
     ?>
 </body>
 </html>
