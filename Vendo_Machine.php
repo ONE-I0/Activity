@@ -74,16 +74,19 @@
                 else{
                     $syn = "pieces";
                 }
-                
+                //this will print the purchased items
                 foreach($soft as $keysoft => $Valuesoft){
-                    echo "<p>" . $quantity . " " . $syn . " of " . $size . " " . $keysoft . " amounting to ₱". $total = intval($Valuesoft) * intval($quantity) + ($add * intval($quantity)). "</p>"; 
+                    echo "<ul>
+                    <li>" . $quantity . " " . $syn . " of " . $size . " " . $keysoft . " amounting to ₱". $total = intval($Valuesoft) * intval($quantity) + ($add * intval($quantity)). "</li></ul>"; 
                 }
                 
+                //this will print the total item 
                 $totalNumber = sizeof($soft) * $quantity;
-                echo "<label>Total number of item:</label>". $totalNumber . "<br>";
+                echo "<label><b>Total number of item: </label></b>". $totalNumber . "<br>";
 
+                //this will print the grandtotal
                 $grandtotal = $quantity*(array_sum($soft)+$add*$quantity);
-                echo "<label>Total amount:</label>". $grandtotal . "<br>";
+                echo "<label><b>Total amount: </label></b>". $grandtotal . "<br>";
             }
             else{
                 echo "No selected product, Try Again";
