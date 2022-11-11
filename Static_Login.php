@@ -70,19 +70,34 @@
                                 </div>';
                         }
                         elseif($temp == $userPositions[1]['positions'] && $user == $userPositions[1]['username'] && $pass == $userPositions[1]['password']){
-                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'</div>';
+                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </div>';
                         }
                         elseif($temp == $userPositions[2]['positions'] && $user == $userPositions[2]['username'] && $pass == $userPositions[2]['password']){
-                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'</div>';
+                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </div>';
                         }
                         elseif($temp == $userPositions[3]['positions'] && $user == $userPositions[3]['username'] && $pass == $userPositions[3]['password']){
-                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'</div>';
+                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </div>';
                         }
                         elseif($temp == $userPositions[4]['positions'] && $user == $userPositions[4]['username'] && $pass == $userPositions[4]['password']){
-                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'</div>';
+                            echo '<div class="alert alert-success fixed-top container-fluid" style="width:19.5%;" role="alert">Welcome: '. $temp .'
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </div>';
                         }
                         else
-                        echo '<div class="alert alert-danger fixed-top container-fluid" style="width:19.5%;" role="alert">Invalid Username / Password</div>'; 
+                        echo '<div class="alert alert-danger fixed-top container-fluid" style="width:19.5%;" role="alert">Invalid Username / Password
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                            </div>'; 
                         
                 }  
 
